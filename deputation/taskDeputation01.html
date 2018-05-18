@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    Task={
+        setID: function (ID) {
+            this.id = ID;
+        },
+        outputID : function(){console.log(this.id);}
+    };
+    XYZ = Object.create(Task);
+    XYZ.prepareTask = function(ID,Label){
+        console.log("1"+this.label);
+        this.setID(ID);
+        this.label=Label;
+        console.log("2"+this.label);
+        console.log(this);
+    };
+    XYZ.outputTaskDetails = function(){
+        this.outputID();
+        console.log("라벨쓰 ㅠㅠ" ,this.label);
+    };
+    XYZ.prepareTask("123","라벨쓰");
+    XYZ.outputTaskDetails();
+    console.log(XYZ.label);
+    console.log(Task.label);
+</script>
+</body>
+</html>

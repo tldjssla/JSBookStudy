@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+
+        function Foo(who,you){
+            this.me = who;
+            this.you= you;
+        };
+        Foo.prototype.identity=function(){
+            return "i am"+this.me+this.you;
+        }
+        function Bar(who){
+            Foo.call(this,who,"sieon");
+        }
+        Bar.prototype = Object.create(Foo.prototype);
+        Bar.prototype.speak = function(){
+            alert("hello"+this.identity()+".");
+        };
+        var b1 = new Bar("b1");
+        var b2 = new Bar("b2");
+
+        b1.speak();
+        b2.speak();
+    </script>
+</body>
+</html>

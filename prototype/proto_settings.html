@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var anotherObject ={
+        a:2
+    };
+    var myObejct = Object.create(anotherObject);
+    console.log(anotherObject.a);
+    console.log(anotherObject.hasOwnProperty("a"));
+    console.log(myObejct.hasOwnProperty("a"));
+    console.log(myObejct.a++);
+    console.log(anotherObject.a);
+    console.log(myObejct.a);
+    console.log(myObejct.hasOwnProperty("a"));
+
+    function Foo(){
+    }
+    Foo.prototype;
+    console.log(Foo.prototype);
+
+
+</script>
+</body>
+</html>

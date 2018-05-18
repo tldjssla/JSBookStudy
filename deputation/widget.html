@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var Widget={
+            init:function(width,height){
+                this.width=width||50;
+                this.height=height||50;
+                this.$elem=nul;
+            },
+            insert:function($where){
+                if(this.$elem){
+                    this.$elem.css({
+                        width:this.width+"px",
+                        height:this.height+"px"
+                    }).appendTo($where);
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

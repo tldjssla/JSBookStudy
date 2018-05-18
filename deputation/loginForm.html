@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var LoginController={
+            errors:[],
+            getUser:function(){
+                return document.getElementById("login_username").value;
+            },
+            getPassword:function(){
+                return document.getElementById("login_password").value;
+            },
+            validateEntry:function(user,pw){
+                user = user||this.getUser();
+                pw = pw||this.getPassword();
+                if(!(user&&pw)){
+                    return this.failure("ID와 비밀번호를 입력해주세요");
+                };
+                return true;
+            },
+            showDialog:function(title,msg){
+                alert(title+", "+msg);
+            },
+            failure:function(err){
+                this.errors.push(err);
+                this.showDialog("에러","로그인실패: "+err);
+            }
+        };
+
+
+        var AuthController = Object.create(LoginController);
+        AuthController.errors=[];
+        AuthController.checkAuth = function(){
+            var user = this.getUser();
+            var pw = this.getPassword();
+            if(this.validateEntry(user,pw)){
+                this.server("/check-auth",{
+                    user:user,
+                    pw:pw
+                }).then(this.accepted.bind(this)).fail(this.rejected.bind(this));
+            }
+        };
+        AuthController.server=function(url,data){
+            return $.ajax({
+                url:url,
+                data:data
+            });
+        };
+        AuthController.accepted=function(){
+            this.showDialog("성공","인증성공");
+        };
+        AuthController.rejected=function(err){
+            this.failure("인증실패"+err);
+        };
+
+        //RUN
+        AuthController.checkAuth();
+
+        var controller1 = Object.create(AuthController);
+        var controller2 = Object.create(AuthController);
+        //run
+        controller1.checkAuth();
+    </script>
+</body>
+</html>

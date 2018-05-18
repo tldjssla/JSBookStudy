@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var myObject={
+        a:2
+    };
+    console.log(myObject.a);
+    var anotherObject={
+        a:3
+    };
+    var myObject2 = Object.create(anotherObject);
+    console.log(myObject2.a);
+
+    var anObject ={
+        a:5
+    };
+    var thisObject = Object.create(anObject);
+    for(var k in thisObject){
+        console.log(k+"발견");
+    }
+    console.log("a" in thisObject);
+    console.log("값"+thisObject.a);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
