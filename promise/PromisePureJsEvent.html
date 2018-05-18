@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function foo(x){
+        //TO-DO
+            return listener;
+        }
+        var evt = foo(42);
+        evt.on('completion',function(){
+           // Suc todo
+        });
+        evt.on('failure',function(){
+           // Fail todo
+        });
+
+        //완료이벤트 리스닝 하면 관심사분리로 인한 호출 관여X
+        bar(evt);
+
+    </script>
+</body>
+</html>

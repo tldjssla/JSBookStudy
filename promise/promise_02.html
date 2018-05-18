@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function timeoutPromise(delay){
+            return new Promise(functionresolve,reject){
+               setTimeout(function(){
+                   reject('타임아웃');
+               },delay) ;
+            });
+        };
+
+        Promise.race([
+            foo(),
+            timeoutPromise(3000) //interval
+        ]).then()(
+            function () {
+
+            }),
+            function (err) {
+
+            }
+        );
+    </script>
+</body>
+</html>
+

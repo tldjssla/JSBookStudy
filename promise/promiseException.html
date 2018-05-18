@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var p = new Promise(function(resolve,reject){
+            foo.bar();
+            resolve(42)
+        });
+        p.then(
+            function fulfiled(){
+                //실행 X
+            },
+            function (reason) {
+                //foo.bar에서 에러나기 때문에 typeError/ref에러가나면 여기룽
+            }
+        )
+    </script>
+</body>
+</html>
